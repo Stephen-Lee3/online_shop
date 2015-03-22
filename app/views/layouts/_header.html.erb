@@ -1,21 +1,27 @@
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a>首页</a></li>
+  <li role="presentation" class="active"><%= link_to '首页', root_path%></li>
   <li role="presentation"><a href="#">所有产品</a></li>
   <li role="presentation"><a href="#"> 新品</a></li>
   <li role="presentation"><a href="#"> 打折</a></li>
   <li class="pull-right" role="presentation"><a href="#"> 商品分类</a></li>
+
+
+   <% if user_signed_in?%>
   <li class="pull-right" role="presentation"><a href="#"> 收藏夹</a></li>
   <li class="pull-right" role="presentation pull-right"><a href="#"> 购物车</a></li>
   <li class="pull-right" role="presentation" class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Dropdown <span class="caret"></span>
+      <%= current_user.nick_name%> <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <li>#</li>
-       <li>#</li>
-        <li>#</li>
+      <li><%= link_to '已买商品', '#'%></li>
+       <li><%= link_to '完善资料', '#'%></li>
+        <li><%= link_to '退出', destroy_user_session_path,method: :delete%></li>
     </ul>
   </li>
-
+  <%else%>
+   <li class="pull-right"><%= link_to '注册', new_user_registration_path%></li>
+   <li class="pull-right"><%= link_to '登录', new_user_session_path%></li>
+  <%end%>
     
 </ul>
