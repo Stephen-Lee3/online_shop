@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322095532) do
+ActiveRecord::Schema.define(version: 20150322105105) do
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.decimal  "price",                      precision: 8, scale: 2
+    t.integer  "inventory",    limit: 4
+    t.text     "introduction", limit: 65535
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+  end
+
+  add_index "products", ["id"], name: "index_products_on_id", using: :btree
+  add_index "products", ["name"], name: "index_products_on_name", using: :btree
+  add_index "products", ["price"], name: "index_products_on_price", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "nick_name",  limit: 255
