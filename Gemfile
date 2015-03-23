@@ -35,6 +35,8 @@ gem 'bootstrap-sass'
 
 gem 'simple_form'
 
+gem 'carrierwave'
+
 #用户验证
 gem 'devise'
 gem 'devise-i18n'

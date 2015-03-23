@@ -1,2 +1,20 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="col-md-6 col-md-offset-4">
+	<h3>个人资料</h3>
+ <div>昵称：<strong><%= current_user.nick_name%></strong></div>
+ <div>email：<strong><%= current_user.email%></strong></div>
+ <div class="avatar pull-right"><%= image_tag(current_user.avatar,size:"70x70") unless current_user.avatar.blank? %></div>
+ <br>
+ <%= simple_form_for current_user do |f|%>
+ <%= f.input :avatar, label: "更换头像"%>
+ <%= f.submit '更改', class: "btn btn-info"%>
+ <%end%>
+  <br>
+  <h3>管理收货信息</h3><hr>
+ <%= simple_form_for current_user do |f|%>
+  <%= f.input :real_name%>
+  <%= f.input :phone%>
+  <%= f.input :address%>
+  <%= f.submit '修改', class: "btn btn-lg btn-primary"%>
+
+ <%end%>
+</div>

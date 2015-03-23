@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322114845) do
+ActiveRecord::Schema.define(version: 20150323070215) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name",         limit: 255
-    t.decimal  "price",                      precision: 8, scale: 2
+    t.decimal  "price",                         precision: 8, scale: 2
     t.integer  "inventory",    limit: 4
-    t.text     "introduction", limit: 65535
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
+    t.text     "introduction", limit: 16777215
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.string   "picture",      limit: 255
   end
 
   add_index "products", ["id"], name: "index_products_on_id", using: :btree
@@ -29,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150322114845) do
   create_table "users", force: :cascade do |t|
     t.string   "nick_name",              limit: 255
     t.string   "address",                limit: 255
-    t.integer  "phone",                  limit: 4
+    t.string   "phone",                  limit: 255
     t.string   "real_name",              limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150322114845) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.string   "avatar",                 limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
