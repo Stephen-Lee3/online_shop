@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323081936) do
+ActiveRecord::Schema.define(version: 20150323101254) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 20150323081936) do
     t.string   "storage_format",       limit: 255
     t.string   "storage_mime_type",    limit: 255
     t.string   "storage_size",         limit: 255
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "carts", ["id"], name: "index_carts_on_id", using: :btree
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "cart_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "products", force: :cascade do |t|

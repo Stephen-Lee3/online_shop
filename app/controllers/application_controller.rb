@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
   def set_locale
    	  I18n.locale = params[:locale] || I18n.default_locale
    end
+
+   def find_cart
+     unless current_user.cart
+       Cart.create(user_id: current_user.id)
+     end
+   end
 end
