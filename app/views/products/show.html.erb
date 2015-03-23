@@ -1,2 +1,20 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="col-md-8 col-md-offset-2">
+ <div class="col-md-4">
+ <div class="product_picture">
+  <%= image_tag(@product.picture,size:"420x420")%>
+ </div>
+ </div>
+ <div class="col-md-6 col-md-offset-2">
+ 	<h3><%= @product.name%></h3>
+ 	价格：<div class="price"><%= number_to_currency(@product.price)%></div>
+ 	库存<strong><%= @product.inventory%></strong>件
+ 	<div><%= button_to '立即购买', '#', class: "btn btn-lg btn-success"%></div><br>
+ 	<div><%= button_to '加入购物车', '#', class: "btn btn-lg btn-info"%></div>
+ </div>
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+ <hr>
+    <h3>商品详情</h3>
+    <%= @product.introduction%>
+	</div>

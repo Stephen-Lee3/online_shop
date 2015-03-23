@@ -1,4 +1,8 @@
-<div class="col-md-10">
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="col-md-10 col-md-offset-1">
+ <% @products.each do |product|%>
+  <div class="col-md-3">
+   <div><%= link_to image_tag(product.picture, size:"300x300"),product_path(product)%></div>
+   <div><%=link_to product.price, product_path(product)%></div>
+  </div>
+ <%end%>
 </div>

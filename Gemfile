@@ -33,14 +33,23 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
 
+#表单处理 
 gem 'simple_form'
 
+# 文件上传
 gem 'carrierwave'
+
+#分页
+gem 'kaminari'
 
 #用户验证
 gem 'devise'
 gem 'devise-i18n'
 
+#后台
+gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
+gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 
 gem 'rails-i18n'
 
