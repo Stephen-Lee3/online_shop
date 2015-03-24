@@ -8,7 +8,7 @@
 
    <% if user_signed_in?%>
   <li class="pull-right" role="presentation"><a href="#"> 收藏夹</a></li>
-  <li class="pull-right" role="presentation pull-right"><%= link_to '购物车', cart_path(current_user)%></li>
+  <li class="pull-right" role="presentation pull-right" id="item_count"><%= link_to "购物车#{current_user.cart.items.count}", cart_path(current_user)%></li>
   <li class="pull-right" role="presentation" class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
       <%= current_user.nick_name%> <span class="caret"></span>
@@ -19,7 +19,7 @@
         <li><%= link_to '退出', destroy_user_session_path,method: :delete%></li>
     </ul>
   </li>
-  <%= image_tag(current_user.avatar, size: "35x35",class: "pull-right img-rounded")%>
+  <%=link_to image_tag(current_user.avatar, size: "35x35",class: "pull-right img-rounded"), edit_user_path(current_user)%>
   <%else%>
    <li class="pull-right"><%= link_to '注册', new_user_registration_path%></li>
    <li class="pull-right"><%= link_to '登录', new_user_session_path%></li>

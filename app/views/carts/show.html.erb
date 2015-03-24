@@ -8,14 +8,17 @@
  <% @items.each do |item|%>
  <div class="item">
   <div class="col-md-2">
-   <%= image_tag(item.product.picture,size:"80x80")%>
+   <%=link_to image_tag(item.product.picture,size:"80x80"),product_path(item.product)%>
   </div>
   <div class="col-md-3">
-    <%= item.product.name%>
+    <%=link_to item.product.name, product_path(item.product)%>
   </div>
    <div class="col-md-1">
      <%= item.product.price%>
    </div>
+    <div class="col-md-1">
+      <%= link_to '删除', item_path(item),method: :delete%>
+    </div>
 </div><br>
  <%end%>
 </div>

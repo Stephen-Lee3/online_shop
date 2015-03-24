@@ -9,7 +9,7 @@
  	价格：<div class="price"><%= @product.price%></div>
  	库存<strong><%= @product.inventory%></strong>件
  	<div><%= button_to '立即购买', '#', class: "btn btn-lg btn-success"%></div><br>
- 	<div><%= button_to '加入购物车', items_path(product_id: @product), class: "btn btn-lg btn-info"%></div>
+ 	<div><%= button_to '加入购物车', items_path(product_id: @product),remote: true, class: "btn btn-lg btn-info"%></div>
  </div>
 </div>
 
