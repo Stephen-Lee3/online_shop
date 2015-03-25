@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
   has_one :cart, dependent: :destroy
+  has_many :orders
    mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,

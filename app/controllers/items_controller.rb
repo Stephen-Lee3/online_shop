@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :find_cart
+  before_action :authenticate_user!
   def create
   	@cart = current_user.cart
   	@product = Product.find(params[:product_id])
@@ -11,7 +12,6 @@ class ItemsController < ApplicationController
   	if @item.save
       respond_to do |format|
      format.html {redirect_to @product}
-     format.js
       end
    end
   end
@@ -24,5 +24,5 @@ class ItemsController < ApplicationController
       format.html{redirect_to current_user.cart}
     end
   end
-  
+   
 end
