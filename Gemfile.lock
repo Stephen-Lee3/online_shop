@@ -66,6 +66,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.0)
@@ -295,6 +297,7 @@ DEPENDENCIES
   activeadmin (~> 1.0.0.pre1)
   activeadmin-dragonfly!
   activeadmin-wysihtml5!
+  ancestry
   better_errors
   bootstrap-sass
   byebug

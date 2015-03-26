@@ -16,6 +16,7 @@ ActiveAdmin.register Product do
       f.input :name
       f.input :price
       f.input :inventory
+      f.input :category
       f.input :picture
       f.input :introduction, as: :wysihtml5, commands: :all, blocks: :basic,height: :huge
     end
