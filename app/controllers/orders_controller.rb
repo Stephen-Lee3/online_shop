@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   def index
-   @orders = current_user.orders.includes(:products).paginate(page: params[:page], per_page: 5).order('created_at DESC')
+   @orders = current_user.orders.includes(:products,:items).paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end
 
   def show

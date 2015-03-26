@@ -21,11 +21,10 @@
  <div class="col-md-2"><%= link_to image_tag(product.picture, size: "50x50"), product_path(product)%></div>
  <div class="col-md-3"><%=link_to product.name, product_path(product)%></div>
  <div class="col-md-1"><%= product.price%></div>
- <div class="col-md-1"></div>
- <div class="col-md-1">1</div>
-</div><br>
+ <div class="col-md-1"><%= item_quantity(order.id,product.id)%></div>
+ <div class="col-md-1 "><%= product.price * item_quantity(order.id,product.id)%></div></div><br>
  <%end%>
-
+  
  <%end%>
 <%= will_paginate @orders %>
 </div>
