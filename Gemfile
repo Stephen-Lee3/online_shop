@@ -41,6 +41,8 @@ gem 'carrierwave'
 
 #分页
 gem 'kaminari'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 #用户验证
 gem 'devise'

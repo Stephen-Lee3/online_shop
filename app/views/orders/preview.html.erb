@@ -13,22 +13,17 @@
  
  <div class="item">
   <div class="col-md-2">
-   <%=link_to image_tag(@item.product.picture,size:"80x80"),product_path(@item.product)%>
+   <%=link_to image_tag(@product.picture,size:"80x80"),product_path(@product)%>
   </div>
   <div class="col-md-3">
-    <%=link_to @item.product.name, product_path(@item.product)%>
+    <%=link_to @product.name, product_path(@product)%>
   </div>
    <div class="col-md-1">
-     <%= @item.product.price%>
+     <%= @product.price%>
    </div>
 
      <div class="col-md-1">
-         <%= simple_form_for @order do |f|%>
-         <%= f.simple_fields_for @item do |item|%>
-         <%= item.input :quantity,label: false%>
-          <%end%>
-           <%end%>
-
+    
      </div>
     </div>
   </div>
@@ -39,9 +34,9 @@
    <%= f.input :buyer,label: "收货人姓名：",input_html: { value: current_user.real_name }%>
    <%= f.input :phone,label: "手机号码：",input_html: { value: current_user.phone }%>
    <%= f.input :address,label: "收货地址：",input_html: { value: current_user.address }%>
-   <%= f.simple_fields_for @item do |item|%>
-      <% item.input :product_id, input_html: {value: @item.product.id}%>
-  
+   <%= f.simple_fields_for :items do |item|%>
+   <%= item.input :quantity,label: false%>
+      <%= item.input :product_id, as: :hidden, input_html: {value: @product.id}%>
    <%end%>
    <%= f.submit '提交订单', class: "btn btn-lg btn-success"%>
  <%end%>

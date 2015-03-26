@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   def index
-   @orders = current_user.orders.all
+   @orders = current_user.orders.includes(:products).paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end
 
   def show
@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def preview
   	@order = Order.new
   	@product = Product.find(params[:product_id])
-  	@item = @order.items.build(product: @product)
+    1.times{ @order.items.build(product: @product)}
   end
 
   def create
