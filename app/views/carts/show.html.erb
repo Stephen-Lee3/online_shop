@@ -1,5 +1,11 @@
 <div class="col-md-8 col-md-offset-2">
-	<div class="col-md-5">
+	<%if @items.blank?%>
+  <h1 align="center">您的购物车空空如也～</h1>
+  <%else%>
+  <h2>购物车共有<%=@items.count%>件商品</h2>
+  <%= link_to '清空购物车', cart_path(current_user.cart), method: :delete,class: "btn btn-lg btn-info pull-right",data: {confirm: "确定要清空购物车内#{@items.count}件商品?"}%>
+  <hr>
+  <div class="col-md-5">
    <strong>商品信息</strong>
 	</div>
 	<div class="col-md-1">
@@ -23,4 +29,5 @@
 </div><br>
  <%end%>
  <%= will_paginate @items%>
+ <%end%>
 </div>

@@ -16,17 +16,14 @@
 	</div>
 	<br>
  <% @orders.each do |order|%>
- <% order.products.each do |product|%>
  <div class="item">
- <div class="col-md-2"><%= link_to image_tag(product.picture, size: "50x50"), product_path(product)%></div>
- <div class="col-md-3"><%=link_to product.name, product_path(product)%></div>
- <div class="col-md-1"><%= product.price%></div>
- <div class="col-md-1"><%= item_quantity(order.id,product.id)%></div>
- <div class="col-md-1 "><%= product.price * item_quantity(order.id,product.id)%></div>
+ <div class="col-md-2"><%= link_to image_tag(order.product.picture, size: "50x50"), product_path(order.product)%></div>
+ <div class="col-md-3"><%=link_to order.product.name, product_path(order.product)%></div>
+ <div class="col-md-1"><%= order.product.price%></div>
+ <div class="col-md-1"><%= order.item.quantity%></div>
+ <div class="col-md-1 "><%= order.total_price%></div>
  <div class="col-md-1"><%= link_to '订单详情',order_path(order)%></div>
 </div><br>
- <%end%>
-  
  <%end%>
 <%= will_paginate @orders %>
 </div>
