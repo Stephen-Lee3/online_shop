@@ -17,8 +17,10 @@
      <%= item.product.price%>
    </div>
     <div class="col-md-1">
+      <div><%= link_to '立即购买', preview_order_path(product_id: item.product),method: :post%></div>
       <%= link_to '删除', item_path(item),method: :delete%>
     </div>
 </div><br>
  <%end%>
+ <%= will_paginate @items%>
 </div>

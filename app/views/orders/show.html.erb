@@ -1,2 +1,10 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="col-md-10 col-md-offset-1">
+ <h2> 订单信息</h2><hr>
+  <div>收货地址: <strong><%= @order.address%></strong></div>
+  <div>收货人: <strong><%= @order.buyer%></strong></div>
+ <div>联系号码: <strong><%= @order.phone%></strong></div>
+ <hr>
+ <h3>订单详情</h3>
+ <div>订单编号: <strong><%=@order.id%></strong></div>
+ <div>订单日期：<strong><%= format_time(@order)%></strong></div>
+</div>
