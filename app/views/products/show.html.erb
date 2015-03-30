@@ -1,7 +1,17 @@
 <div class="col-md-8 col-md-offset-2">
  <div class="col-md-4">
  <div class="product_picture">
-  <%= image_tag(@product.picture,size:"420x420")%>
+  <div><%= image_tag(@product.picture,size:"420x420")%></div>
+  <div id="mark_product">
+  	<%if user_signed_in?%>
+  	<%if current_user.marking?(@product)%>
+     <%= render 'unmarked'%>
+ <%else%>
+      <%= render 'mark'%>
+  <%end%>
+  <%end%>
+  <div class="pull-right",id="mark_count"><%= render 'marking_count'%></div>
+  </div>
  </div>
  </div>
  <div class="col-md-6 col-md-offset-2">
@@ -11,9 +21,10 @@
      <h2 class="red_color">抱歉,该商品暂时缺货～</h2>
      <%else%>
  	库存<strong><%= @product.inventory%></strong>件
- 	<div><%= button_to '立即购买', preview_order_path(product_id: @product), class: "btn btn-lg btn-success"%></div><br>
+ 	<div><%= button_to '立即购买', preview_order_path(product_id: @product), class: "btn btn-lg btn-success"%></div>
+     <div><%= button_to '加入购物车', items_path(product_id: @product), class: "btn btn-lg btn-info"%></div>
+ 	<br>
  	<%end%>
- 	<div><%= button_to '加入购物车', items_path(product_id: @product), class: "btn btn-lg btn-info"%></div>
  </div>
 </div>
 

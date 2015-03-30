@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325113016) do
+ActiveRecord::Schema.define(version: 20150330083353) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -85,6 +85,17 @@ ActiveRecord::Schema.define(version: 20150325113016) do
     t.integer  "order_id",   limit: 4
     t.integer  "quantity",   limit: 4, default: 1
   end
+
+  create_table "marks", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "product_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "marks", ["product_id"], name: "index_marks_on_product_id", using: :btree
+  add_index "marks", ["user_id", "product_id"], name: "index_marks_on_user_id_and_product_id", using: :btree
+  add_index "marks", ["user_id"], name: "index_marks_on_user_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "buyer",      limit: 255

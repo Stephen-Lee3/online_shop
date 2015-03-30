@@ -18,8 +18,12 @@ class ApplicationController < ActionController::Base
    end
 
    def find_cart
+     if user_signed_in?
      unless current_user.cart
        Cart.create(user_id: current_user.id)
      end
+   else
+     redirect_to user_session_path
+   end
    end
 end
