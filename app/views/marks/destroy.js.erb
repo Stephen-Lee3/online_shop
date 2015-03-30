@@ -1,2 +1,2 @@
 $('#mark_product').html("<%= j(render('products/mark'))%>")
-$('#mark_count').html("<%= j(render('products/marking_count'))%>")
+$('#mark_count').html("<%= @product.marking_users.count%>")

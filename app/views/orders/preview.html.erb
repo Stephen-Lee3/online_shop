@@ -35,7 +35,7 @@
    <%= f.input :phone,label: "手机号码：",input_html: { value: current_user.phone }%>
    <%= f.input :address,label: "收货地址：",input_html: { value: current_user.address }%>
    <%= f.simple_fields_for :item do |item|%>
-   <%= item.input :quantity,label: false%>
+   <%= item.input :quantity,label: "购买数量"%>
       <%= item.input :product_id, as: :hidden, input_html: {value: @product.id}%>
    <%end%>
    <%= f.submit '提交订单', class: "btn btn-lg btn-success"%>
