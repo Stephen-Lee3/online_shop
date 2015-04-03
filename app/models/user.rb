@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :marks, dependent: :destroy
   has_many :mark_products, through: :marks, source: :product
+  has_many :comments
    mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,

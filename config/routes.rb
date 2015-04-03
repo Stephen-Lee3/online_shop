@@ -1,12 +1,16 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
 
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
   root 'products#index'
 
-  resources :products
+  resources :products do
+   get 'detail', on: :member
+   resources :comments, only: [:index,:create]
+  end
   resources :users, only: [:show,:edit,:update,:destroy]
   resources :carts, only: [:show,:destroy]
   resources :items, only: [:create,:destroy]
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
   end
   
   resources :marks, only: [:index, :create, :destroy]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

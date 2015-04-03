@@ -14,6 +14,8 @@
    <div class="pull-right">已经有<%= link_to @product.marking_users.count, '#', id: "mark_count", class: "red_color"%>人收藏该商品</div>
  </div>
  </div>
+
+
  <div class="col-md-6 col-md-offset-2">
  	<h3><%= @product.name%></h3>
  	价格：<div class="price"><%= @product.price%></div>
@@ -29,7 +31,12 @@
 </div>
 
 <div class="col-md-8 col-md-offset-2">
- <hr>
-    <h3 align="center">商品详情</h3>
-    <%= sanitize @product.introduction%>
+
+      <ul class="nav nav-tabs">
+  <li role="presentation" class="active"><%= link_to '商品详情', detail_product_path,remote: true %></li>
+  <li role="presentation"><%= link_to '评价', product_comments_path(@product),remote: true%></li>
+</ul>
+    <div id="detail">
+    <%= @product.introduction%>
+    </div>
 	</div>
