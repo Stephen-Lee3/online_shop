@@ -1,19 +1,11 @@
-
-<% @comments.each do |comment|%>
-<div class="item">
-<div class="col-md-3">
- <div><%= image_tag(comment.user.avatar,size: "60x60",class: "img-circle")%></div>
-  <%= comment.user.nick_name%>
+<div id="comment_lists">
+<%= render 'comment_lists'%>
 </div>
-<div class="col-md-8">
- <%= comment.content%>
- </div>
-</div><br>
-<%end%>
 <hr>
 
+<!--评论表单-->
 <div>
-<%= simple_form_for [@product,Comment.new] do |f|%>
+<%= simple_form_for [@product,Comment.new],remote: true do |f|%>
 <%= f.input :user_id, as: :hidden, input_html: {value: current_user.id}%>
 <%= f.input :content,label: "发表评价" %> 
 <%= f.submit '提交', class: "btn btn-lg btn-primary"%>
