@@ -2,7 +2,7 @@
 <div class="item">
 <div class="col-md-2">
  <div><%= image_tag(comment.user.avatar,size: "60x60",class: "img-circle")%></div>
-  <%= comment.user.nick_name%>
+  <div><%= comment.user.nick_name%></div>
 </div>
 <div class="col-md-8">
  <%= time_ago_in_words(comment.created_at)%><br>	
@@ -10,4 +10,4 @@
  </div>
 </div><br>
 <%end%>
-<%= will_paginate @comments,{previous_label: "上一页", next_label: "下一页" }%>
+<%= will_paginate @comments%>

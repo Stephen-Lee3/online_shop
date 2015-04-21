@@ -4,20 +4,12 @@
 	</div>
 	<div class="col-md-1">
     <strong>单价(元)</strong>
-	</div><br>
- <% @mark_products.each do |product|%>
- <div class="item">
-  <div class="col-md-2">
-   <%=link_to image_tag(product.picture,size:"80x80"),product_path(product)%>
+	</div>
+    <div class="col-md-1">
+     <strong>操作</strong>
+    </div>
+	<br>
+  <div id="marks_list">
+  <%= render 'marks/marks_list'%>
   </div>
-  <div class="col-md-3">
-    <%=link_to product.name, product_path(product)%>
-  </div>
-   <div class="col-md-1">
-     <%= product.price%>
-   </div>
-</div><br>
- <%end%>
- <%= will_paginate @mark_products%>
-
 </div>

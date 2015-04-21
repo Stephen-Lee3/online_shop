@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     post 'preview', on: :member
   end
   
-  resources :marks, only: [:index, :create, :destroy]
+  resources :marks, only: [:index, :create, :destroy] do
+     delete 'remove', on: :member
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

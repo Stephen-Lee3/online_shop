@@ -37,6 +37,6 @@
   <li role="presentation"><%= link_to '评价', product_comments_path(@product),remote: true%></li>
 </ul>
     <div id="detail">
-    <%= @product.introduction%>
+    <%= sanitize @product.introduction%>
     </div>
 	</div>
