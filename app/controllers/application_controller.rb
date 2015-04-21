@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   
   # not finish i18n
   def set_locale
-   	  I18n.locale = params[:locale] || I18n.default_locale
+      I18n.locale = params[:locale] || I18n.default_locale
    end
 
    def find_cart
