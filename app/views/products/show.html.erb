@@ -28,15 +28,16 @@
  	<br>
  	<%end%>
  </div>
+
 </div>
 
 <div class="col-md-8 col-md-offset-2">
 
       <ul class="nav nav-tabs">
   <li role="presentation" class="active"><%= link_to '商品详情', detail_product_path,remote: true %></li>
-  <li role="presentation"><%= link_to '评价', product_comments_path(@product),remote: true%></li>
+  <li role="presentation"><%= link_to "评价(#{@comments_count})", product_comments_path(@product),remote: true%></li>
 </ul>
     <div id="detail">
-    <%= sanitize @product.introduction%>
+     <%= render 'product_detail'%>
     </div>
 	</div>

@@ -5,9 +5,8 @@
   <div><%= comment.user.nick_name%></div>
 </div>
 <div class="col-md-8">
- <%= time_ago_in_words(comment.created_at)%><br>	
+ <div class="time_style"><%= time_ago_in_words(comment.created_at)%>前</div><br>	
  <%= comment.content%>
  </div>
 </div><br>
 <%end%>
-<%= will_paginate @comments%>

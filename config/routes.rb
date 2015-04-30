@@ -9,8 +9,13 @@ Rails.application.routes.draw do
 
   resources :products do
    get 'detail', on: :member
-   resources :comments, only: [:index,:create]
+   resources :comments, only: [:index,:create] 
   end
+
+  resources :comments do
+  get 'all', on: :member
+  end
+
   resources :users, only: [:show,:edit,:update,:destroy]
   resources :carts, only: [:show,:destroy]
   resources :items, only: [:create,:destroy]

@@ -1,1 +1,1 @@
-$("#detail").html("<%= sanitize @product.introduction %>")
+$("#detail").html("<%= j(render('product_detail')) %>")
