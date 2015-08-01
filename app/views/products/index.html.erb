@@ -1,6 +1,6 @@
 <div class="col-md-10 col-md-offset-1">
  <% @products.each do |product|%>
- <div class="col-md-3">
+ <div class="col-md-2">
   	<div class="product_border">
    <div><%= link_to image_tag(product.picture, size:"200x200"),product_path(product)%></div>
    <div><%=link_to product.price, product_path(product)%></div>
