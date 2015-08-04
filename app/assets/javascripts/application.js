@@ -14,8 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require jquery-ui
+//= require js/slider
+//= require js/sHover
 //= require_tree .
 
 function item_exist(){
 	 alert("该商品已在您的购物车内");
 }
+
+
+

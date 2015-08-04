@@ -12,8 +12,16 @@
  *
  *= require_tree .
  *= require_self
- */
+ *= require jquery-ui
+ *= require slider
 
+ */
+hr{
+  border: 1px dashed;
+  -webkit-box-shadow:0 0 10px #0CC;  
+  -moz-box-shadow:0 0 10px #0CC;  
+  box-shadow:0 0 10px #0CC;  
+}
  .item{
  	background-color: #F2F2F2;
  	border: 1px solid #FAF0E6;
@@ -35,11 +43,9 @@
  }
 
  .product_border{
- 	
- 	margin-left: 1%;
- 	margin-right: 1%;
  	margin-bottom: 5%;
-
+ 	margin-left: 1%;
+    float:left;
      -webkit-box-shadow:0 0 10px #0CC;  
   -moz-box-shadow:0 0 10px #0CC;  
   box-shadow:0 0 10px #0CC;  
@@ -48,3 +54,13 @@
  .time_style{
  	color: #808080;
  }
+
+
+.example1{
+	width: 250px;
+	height: 250px;
+	
+}
+.intro1{
+	background: #FFF0F5;
+}

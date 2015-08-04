@@ -1,10 +1,66 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-12">
+
+<div id="banner_tabs" class="flexslider">
+        <ul class="slides">
+            <li>
+                <a title="" target="_blank" href="#">
+                    <%= image_tag "banner1.jpg", size: "1920x482", style: "background: url(alpha.png) no-repeat center;"%>
+                </a>
+            </li>
+            <li>
+                <a title="" href="#">
+                    <%= image_tag "banner2.jpg",size: "1920x482", style: "background: url(alpha.png) no-repeat center;"%>
+                </a>
+            </li>
+            <li>
+                <a title="" href="#">
+                    <%= image_tag "banner3.jpg", size: "1920x482", style: "background: url(alpha.png) no-repeat center;"%>
+                </a>
+            </li>
+        </ul>
+        <ul class="flex-direction-nav">
+            <li><a class="flex-prev" href="javascript:;">Previous</a></li>
+            <li><a class="flex-next" href="javascript:;">Next</a></li>
+        </ul>
+        <ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
+            <li><a>1</a></li>
+            <li><a>2</a></li>
+            <li><a>2</a></li>
+        </ol>
+    </div>
+   
+ <h2>全部商品</h2><hr>
  <% @products.each do |product|%>
- <div class="col-md-2">
-  	<div class="product_border">
-   <div><%= link_to image_tag(product.picture, size:"200x200"),product_path(product)%></div>
-   <div><%=link_to product.price, product_path(product)%></div>
-</div>
-  </div>
+    <div class="product_border">
+   <div class="example1">
+    <%=image_tag product.picture, size: "250x250"%>
+    <span class="intro1">
+     <h3 align="center"><%= link_to product.name, product_path(product)%></h3><hr>
+     <%= sanitize product.introduction%>
+    </span>
+   </div>
+   <div><strong><%=link_to "$#{product.price}", product_path(product), class: "red_color"%></strong></div>
+   </div>
+
  <%end%>
+ <script type="text/javascript">
+var example1=new sHover("example1","intro1");
+$(function() {
+        var bannerSlider = new Slider($('#banner_tabs'), {
+            time: 5000,
+            delay: 400,
+            event: 'hover',
+            auto: true,
+            mode: 'fade',
+            controller: $('#bannerCtrl'),
+            activeControllerCls: 'active'
+        });
+        $('#banner_tabs .flex-prev').click(function() {
+            bannerSlider.prev()
+        });
+        $('#banner_tabs .flex-next').click(function() {
+            bannerSlider.next()
+        });
+    })
+ </script>
 </div>
