@@ -14,7 +14,7 @@
  *= require_self
  *= require jquery-ui
  *= require slider
-
+ *= require adipoli
  */
 hr{
   border: 1px dashed;
@@ -45,10 +45,8 @@ hr{
  .product_border{
  	margin-bottom: 5%;
  	margin-left: 1%;
-    float:left;
-     -webkit-box-shadow:0 0 10px #0CC;  
-  -moz-box-shadow:0 0 10px #0CC;  
-  box-shadow:0 0 10px #0CC;  
+    float:left; 
+  
  }
 
  .time_style{
@@ -56,11 +54,3 @@ hr{
  }
 
 
-.example1{
-	width: 250px;
-	height: 250px;
-	
-}
-.intro1{
-	background: #FFF0F5;
-}

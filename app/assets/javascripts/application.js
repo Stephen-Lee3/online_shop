@@ -16,7 +16,7 @@
 //= require bootstrap
 //= require jquery-ui
 //= require js/slider
-//= require js/sHover
+//= require js/jquery.adipoli.min
 //= require_tree .
 
 function item_exist(){
