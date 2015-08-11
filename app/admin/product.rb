@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
- permit_params :name, :price, :inventory, :picture, :introduction
+ permit_params :name, :price, :inventory, :picture, :introduction, :category_id
 
   index do
     selectable_column
@@ -16,7 +16,7 @@ ActiveAdmin.register Product do
       f.input :name
       f.input :price
       f.input :inventory
-      f.input :category
+      f.input :category, collection: Category.where.not(ancestry: nil)
       f.input :picture
       f.input :introduction, as: :wysihtml5, commands: :all, blocks: :basic,height: :huge
     end
