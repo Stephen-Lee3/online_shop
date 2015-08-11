@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403071041) do
+ActiveRecord::Schema.define(version: 20150811142748) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -104,6 +104,16 @@ ActiveRecord::Schema.define(version: 20150403071041) do
   add_index "marks", ["product_id"], name: "index_marks_on_product_id", using: :btree
   add_index "marks", ["user_id", "product_id"], name: "index_marks_on_user_id_and_product_id", using: :btree
   add_index "marks", ["user_id"], name: "index_marks_on_user_id", using: :btree
+
+  create_table "mayun", id: false, force: :cascade do |t|
+    t.integer  "id",         limit: 4,   default: 0, null: false
+    t.string   "buyer",      limit: 255
+    t.string   "phone",      limit: 255
+    t.string   "address",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.string   "buyer",      limit: 255

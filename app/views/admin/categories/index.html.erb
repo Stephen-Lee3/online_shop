@@ -1,0 +1,9 @@
+<h1>Categories</h1>
+<% if @categories%>
+<% @categories.each do |c|%>
+<%= c.name %>
+<%end%>
+<%end%>
+<br>
+
+<%= link_to "new_ca", new_admin_category_path%>
