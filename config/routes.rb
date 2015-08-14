@@ -2,13 +2,15 @@
 Rails.application.routes.draw do
 
 
+
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
   root 'products#index'
 
   namespace :admin do
-   resources :categories
+   resources :categories  
   end
 
   resources :products do

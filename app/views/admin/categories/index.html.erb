@@ -1,9 +1,16 @@
-<h1>Categories</h1>
-<% if @categories%>
+<div class="col-md-8 col-md-offset-2">
+<h1>分类</h1>
 <% @categories.each do |c|%>
-<%= c.name %>
+<h2><%=link_to c.name, admin_category_path(c)%></h2>
+<div><% c.children.each do |children|%>
+<h4><%= link_to children.name, admin_category_path(children)%></h4>
 <%end%>
+</div>
+<hr>
 <%end%>
-<br>
 
-<%= link_to "new_ca", new_admin_category_path%>
+<%= simple_form_for Category.new, url: {action: "create"} do |f|%>
+ <%= f.input :name%>
+ <%= f.submit "添加分类"%>
+<%end%>
+</div>
