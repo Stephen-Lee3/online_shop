@@ -1,8 +1,7 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
 
-
-
+  get "products/nav"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

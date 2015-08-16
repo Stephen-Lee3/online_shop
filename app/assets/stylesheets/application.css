@@ -15,7 +15,7 @@
  *= require jquery-ui
  *= require slider
  *= require adipoli
-
+ *= require style
  */
 hr{
   border: 1px dashed;
