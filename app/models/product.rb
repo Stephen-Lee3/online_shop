@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Product < ActiveRecord::Base
 has_many :items
-has_one :order, through: :items
+has_one :order, through: :items, dependent: :destroy
 belongs_to :category
 has_many :marks, dependent: :destroy
 has_many :marking_users, through: :marks, source: :user

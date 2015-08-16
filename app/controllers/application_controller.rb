@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
  before_action :configure_permitted_parameters, if: :devise_controller?
+ before_action :search_categories
 
- 
  private
   def configure_permitted_parameters
   	devise_parameter_sanitizer.for(:sign_up) << :nick_name
@@ -25,5 +25,9 @@ class ApplicationController < ActionController::Base
    else
      redirect_to user_session_path
    end
+   end
+
+   def search_categories
+     @categories = Category.where(ancestry: nil)
    end
 end

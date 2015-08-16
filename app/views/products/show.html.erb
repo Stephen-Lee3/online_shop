@@ -1,7 +1,7 @@
 <div class="col-md-8 col-md-offset-2">
  <div class="col-md-4">
  <div class="product_picture">
-  <div><%= image_tag(@product.picture,size:"420x420")%></div>
+  <div><%= image_tag(@product.picture,size:"200x300")%></div>
   <div id="mark_product">
   	<%if user_signed_in?%>
   	<%if current_user.marking?(@product)%>
@@ -18,7 +18,7 @@
 
  <div class="col-md-6 col-md-offset-2">
  	<h3><%= @product.name%></h3>
- 	价格：<div class="price"><%= @product.price%></div>
+ 	价格：<div class="red_color"><strong>$<%= @product.price%></strong></div>
  	 <%if @product.inventory.zero?%>
      <h2 class="red_color">抱歉,该商品暂时缺货～</h2>
      <%else%>

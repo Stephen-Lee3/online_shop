@@ -1,11 +1,4 @@
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><%= link_to '首页', root_path%></li>
-  <li role="presentation"><%= link_to '所有产品', products_path%></li>
-  <li role="presentation"><a href="#"> 新品</a></li>
-  <li role="presentation"><a href="#"> 打折</a></li>
- 
-
-
    <% if user_signed_in?%>
   <li class="pull-right" role="presentation"><%= link_to '收藏夹', marks_path%></li>
   <li class="pull-right" role="presentation pull-right" id="item_count"><%= link_to "购物车(#{current_user.cart.items.count})", cart_path(current_user)%></li>
