@@ -8,12 +8,15 @@
 </head>
 <body>
 <%= render 'layouts/header'%>
-
+<%= link_to image_tag("logo.png", id: "logo"), root_path %>
+<%= render 'layouts/navigator'%>
 <div class="container-fluid">
  <div class="row">
  	<p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+<div class="col-md-10">
    <%= yield %> 
+ </div>
  </div>
 </div>
 <%= render 'layouts/footer'%>

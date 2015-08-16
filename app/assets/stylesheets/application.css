@@ -15,8 +15,14 @@
  *= require jquery-ui
  *= require slider
  *= require adipoli
- *= require style
+ *= require jdnav
  */
+ #logo{
+  width: 15%;
+  height: 15%;
+  margin: 1%;
+ }
+
 hr{
   border: 1px dashed;
   -webkit-box-shadow:0 0 10px #0CC;  
@@ -48,6 +54,11 @@ hr{
  	margin-left: 1%;
     float:left; 
   
+ }
+
+ .image_preview{
+   width: 200px;
+   height: 300px;
  }
 
  .time_style{
