@@ -15,5 +15,11 @@ class ProductsController < ApplicationController
       format.js
     end
   end
-
+   
+   def search
+    @search  = Product.solr_search do 
+        fulltext params[:query]
+    end
+    @products = @search.results
+  end
 end

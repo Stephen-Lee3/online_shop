@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'products#index'
 
+  get '/search', to: 'products#search'
+
   namespace :admin do
    resources :categories  
   end
