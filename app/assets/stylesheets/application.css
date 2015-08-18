@@ -18,9 +18,10 @@
  *= require jdnav
  */
  #logo{
-  width: 15%;
-  height: 15%;
+  width: 220px;
+  height: 120px;
   margin: 1%;
+  
  }
 
 hr{
@@ -66,3 +67,6 @@ hr{
  }
 
 
+.search_form{
+  margin-top: 5%;
+}

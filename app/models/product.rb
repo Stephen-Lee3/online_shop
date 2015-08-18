@@ -12,4 +12,8 @@ mount_uploader :picture, PictureUploader
  validates :name, presence: true, length: {maximum: 50}
  validates :price, presence: true, numericality: {greater_than_or_equal_to: 0}
  validates :inventory, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+
+ searchable do
+   text :name
+  end
 end
