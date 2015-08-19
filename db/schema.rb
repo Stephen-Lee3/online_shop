@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811142748) do
+ActiveRecord::Schema.define(version: 20150819080309) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -158,6 +158,10 @@ ActiveRecord::Schema.define(version: 20150811142748) do
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "avatar",                 limit: 255
+    t.string   "sex",                    limit: 255
+    t.string   "s_province",             limit: 255
+    t.string   "s_city",                 limit: 255
+    t.string   "s_county",               limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
