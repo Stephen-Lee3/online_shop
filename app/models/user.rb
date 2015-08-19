@@ -16,7 +16,12 @@ class User < ActiveRecord::Base
  validates :nick_name, presence: true, length: {minimum: 2, maximum: 10},
           uniqueness: {case_sensitive: false}
 
-  
+   
+   after_create :create_cart
+   def create_cart
+    Cart.create(user_id: self.id)
+   end
+
  def marking?(product)
   marks.find_by_product_id(product)
  end

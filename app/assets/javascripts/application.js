@@ -17,6 +17,7 @@
 //= require jquery-ui
 //= require js/slider
 //= require js/jquery.adipoli.min
+//= require area
 //= require_tree .
 
 function item_exist(){

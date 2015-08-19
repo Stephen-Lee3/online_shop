@@ -7,6 +7,8 @@
  <br>
  <%= simple_form_for current_user do |f|%>
  <%= f.input :avatar, label: "更换头像"%>
+  <div><strong>性别</strong></div>
+  <%= f.collection_radio_buttons :sex, [["male", '男'] ,["female", '女']], :first, :last%><br>
  <%= f.submit '更改', class: "btn btn-info"%>
  <%end%>
   <br>
@@ -15,8 +17,30 @@
   <%= f.input :real_name%>
   <%= f.input :phone%>
   <%= f.input :address%>
+ 
+  <div class="info">
+  <div>
+   <%= f.input :s_province, as: :select, input_html: {id: "s_province"}%>
+   <%= f.input :s_city, as: :select, input_html: {id: "s_city"}%>
+   <%= f.input :s_county, as: :select, input_html: {id: "s_county"}%>
+    </div>
+    <div id="show"></div>
+</div>
   <%= f.submit '修改', class: "btn btn-lg btn-primary"%>
 
  <%end%>
+
 </div>
 </div>
+
+<script type="text/javascript">_init_area();</script>
+<script type="text/javascript">
+
+var Gid  = document.getElementById ;
+var showArea = function(){
+  Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +  
+  Gid('s_city').value + " - 县/区" + 
+  Gid('s_county').value + "</h3>"
+              }
+Gid('s_county').setAttribute('onchange','showArea()');
+</script>

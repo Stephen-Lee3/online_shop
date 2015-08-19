@@ -33,12 +33,13 @@
  <%= simple_form_for @order do |f|%>
    <%= f.input :buyer,label: "收货人姓名：",input_html: { value: current_user.real_name }%>
    <%= f.input :phone,label: "手机号码：",input_html: { value: current_user.phone }%>
-   <%= f.input :address,label: "收货地址：",input_html: { value: current_user.address }%>
+   <%= f.input :address,label: "收货地址：",input_html: { value: "#{current_user.s_province}-#{current_user.s_city}-#{current_user.s_county}-#{current_user.address}" }%>
    <%= f.simple_fields_for :item do |item|%>
    <%= item.input :quantity,label: "购买数量"%>
       <%= item.input :product_id, as: :hidden, input_html: {value: @product.id}%>
    <%end%>
    <%= f.submit '提交订单', class: "btn btn-lg btn-success"%>
  <%end%>
+
 
 </div>
