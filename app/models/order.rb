@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
  belongs_to :user
- has_one :item
+ has_one :item, dependent: :destroy
  has_one :product, through: :item
  accepts_nested_attributes_for :item
 

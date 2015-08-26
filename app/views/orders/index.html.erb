@@ -17,6 +17,7 @@
 	</div>
 	<br>
  <% @orders.each do |order|%>
+ <%if order.product%>
  <div class="item">
  <div class="col-md-2"><%= link_to image_tag(order.product.picture, size: "50x50"), product_path(order.product)%></div>
  <div class="col-md-3"><%=link_to order.product.name, product_path(order.product)%></div>
@@ -25,6 +26,7 @@
  <div class="col-md-1 "><%= order.total_price%></div>
  <div class="col-md-1"><%= link_to '订单详情',order_path(order)%></div>
 </div><br>
+<%end%>
  <%end%>
 <%= will_paginate @orders %>
 </div>

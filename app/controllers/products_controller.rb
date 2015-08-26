@@ -19,9 +19,8 @@ class ProductsController < ApplicationController
    def search
     @search  = Sunspot.search(Product) do 
         fulltext params[:query]
-        #高级搜索未完成
-        with(:price).greater_than(params[:min_price]) if params[:min_price].present?
-        with(:price).less_than(params[:max_price]) if params[:max_price].present?
+        with(:price).greater_than_or_equal_to(params[:min_price]) if params[:min_price].present?
+        with(:price).less_than_or_equal_to(params[:max_price]) if params[:max_price].present?
     end
     @products = @search.results
   end
