@@ -10,8 +10,8 @@
 </tr>	
 <% @products.each do |product|%>
 <tr>
-<td><%= link_to product.id, edit_admin_product_path(product)%></td>
-<td><%= link_to product.name, edit_admin_product_path(product)%></td>
+<td><%= link_to product.id, edit_admin_product_path(product), 'data-no-turbolink' => true%></td>
+<td><%= link_to product.name, edit_admin_product_path(product),'data-no-turbolink' => true%></td>
 <td><%= product.price%></td>
 <td><%= product.inventory%></td>
 </tr>
