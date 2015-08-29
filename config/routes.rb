@@ -1,16 +1,21 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+
   devise_for :users
   root 'products#index'
 
   get '/search', to: 'products#search'
   get '/high_grade_search', to: 'products#high_grade_search'
+  
 
   namespace :admin do
+   root 'home#index'
    resources :categories  
+   resources :products, except: [:show]
+   resources :users, only: [:index, :edit, :update, :destroy]
+   resources :orders, only: [:index, :edit, :update, :destroy]
+   
   end
 
   resources :products do

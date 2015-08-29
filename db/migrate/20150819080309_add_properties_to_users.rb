@@ -4,5 +4,6 @@ class AddPropertiesToUsers < ActiveRecord::Migration
     add_column :users, :s_province, :string
     add_column :users, :s_city, :string
     add_column :users, :s_county, :string
+    add_column :users, :age, :integer
   end
 end

@@ -9,6 +9,7 @@
  <%= f.input :avatar, label: "更换头像"%>
   <div><strong>性别</strong></div>
   <%= f.collection_radio_buttons :sex, [["male", '男'] ,["female", '女']], :first, :last%><br>
+  <%= f.input :age, label: "年龄"%>
  <%= f.submit '更改', class: "btn btn-info"%>
  <%end%>
   <br>
