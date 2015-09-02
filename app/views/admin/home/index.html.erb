@@ -1,4 +1,261 @@
+<div class="col-md-2">
 <ol>
-<li><%= link_to '商品管理', admin_products_path%></li>
-<li><%= link_to '用户管理', admin_users_path%></li>
+<li><%= link_to '商品管理', admin_products_path, class: "btn btn-primary btn-lg btn-block"%></li>
+<li><%= link_to '商品分类管理', admin_categories_path, class: "btn btn-default btn-lg btn-block"%></li>
+<li><%= link_to '用户管理', admin_users_path, class: "btn btn-primary btn-lg btn-block"%></li>
+<li><%= link_to '订单管理', admin_orders_path, class: "btn btn-default btn-lg btn-block"%></li>
 </ol>
+</div>
+<div class="col-md-10">
+<div><h4>统计时间：<%= @time%></h4>
+ <div id="chart2div" style="width:200px; height:150px;"></div>
+</div>
+<h2 align="center">用户分布统计</h2>
+<div id="chart1div"  style="width: 100%; height: 400px;"></div><hr>
+
+<h2 align="center">用户性别统计</h2>
+ <div id="chart3div" style="width: 100%; height: 400px;"></div><hr>
+</div>
+
+
+<script type="text/javascript">
+ <!-- 用户分布-->
+            var chart;
+            var chartData = [
+              {
+                "country": "<%= @top_provinces[0].s_province if @top_provinces[0]%>",
+                    "visits": "<%= @provinces_user_count[0] || 0%>",
+                    "color": "#FF0F00"
+              },  
+              {
+                "country": "<%= @top_provinces[1].s_province if @top_provinces[1]%>",
+                    "visits": "<%= @provinces_user_count[1] || 0%>",
+                    "color": "#FF6600"
+              } ,  
+              {
+                "country": "<%= @top_provinces[2].s_province if @top_provinces[2]%>",
+                    "visits": "<%= @provinces_user_count[2] || 0%>",
+                    "color": "#FF9E01"
+              }  ,  
+              {
+                "country": "<%= @top_provinces[3].s_province if @top_provinces[3]%>",
+                    "visits": "<%= @provinces_user_count[3] || 0%>",
+                    "color": "#FCD202"
+              }  ,  
+              {
+                "country": "<%= @top_provinces[4].s_province if @top_provinces[4]%>",
+                    "visits": "<%= @provinces_user_count[4] || 0%>",
+                    "color": "#F8FF01"
+              } 
+               ,  
+              {
+                "country": "<%= @top_provinces[5].s_province if @top_provinces[5]%>",
+                    "visits": "<%= @provinces_user_count[5] || 0%>",
+                    "color": "B0DE09"
+              } 
+               ,  
+              {
+                "country": "<%= @top_provinces[6].s_province if @top_provinces[6]%>",
+                    "visits": "<%= @provinces_user_count[6] || 0%>",
+                    "color": "#04D215"
+              } 
+               ,  
+              {
+                "country": "<%= @top_provinces[7].s_province if @top_provinces[7]%>",
+                    "visits": "<%= @provinces_user_count[7] || 0%>",
+                    "color": "#0D8ECF"
+              } 
+               ,  
+              {
+                "country": "<%= @top_provinces[8].s_province if @top_provinces[8]%>",
+                    "visits": "<%= @provinces_user_count[8] || 0%>",
+                    "color": "#0D52D1"
+              } 
+               ,  
+              {
+                "country": "<%= @top_provinces[9].s_province if @top_provinces[9]%>",
+                    "visits": "<%= @provinces_user_count[9] || 0%>",
+                    "color": "#2A0CD0"
+              } 
+             
+            ];
+
+
+            var chart = AmCharts.makeChart("chart1div", {
+                type: "serial",
+                dataProvider: chartData,
+                categoryField: "country",
+                depth3D: 20,
+                angle: 30,
+
+                categoryAxis: {
+                    labelRotation: 90,
+                    gridPosition: "start"
+                },
+
+                valueAxes: [{
+                    title: "用户分布"
+                }],
+
+                graphs: [{
+
+                    valueField: "visits",
+                    colorField: "color",
+                    type: "column",
+                    lineAlpha: 0,
+                    fillAlphas: 1
+                }],
+
+                chartCursor: {
+                    cursorAlpha: 0,
+                    zoomable: false,
+                    categoryBalloonEnabled: false
+                },
+
+                exportConfig: {
+                    menuTop: "21px",
+                    menuBottom: "auto",
+                    menuRight: "21px",
+                    backgroundColor: "#efefef",
+
+                    menuItemStyle	: {
+                    backgroundColor			: '#EFEFEF',
+                    rollOverBackgroundColor	: '#DDDDDD'},
+
+                    menuItems: [{
+                        textAlign: 'center',
+                        icon: '../amcharts/images/export.png',
+                        onclick:function(){},
+                        items: [{
+                            title: 'JPG',
+                            format: 'jpg'
+                        }, {
+                            title: 'PNG',
+                            format: 'png'
+                        }, {
+                            title: 'SVG',
+                            format: 'svg'
+                        }, {
+                            title: 'PDF',
+                            format: 'pdf'
+                        }]
+                    }]
+                }
+            });
+        </script>
+
+
+         <script type="text/javascript">
+         <!--时钟-->
+            var chart;
+            var sArrow;
+            var mArrow;
+            var hArrow;
+            
+            AmCharts.ready(function () {
+            
+                // clock is just an angular gauge with three arrows
+                chart = new AmCharts.AmAngularGauge();
+                chart.startDuration = 0.3;
+            
+                // for simplicyty, we use only one axis
+                var axis = new AmCharts.GaugeAxis();
+                axis.startValue = 0;
+                axis.endValue = 12;
+                axis.valueInterval = 1;
+                axis.minorTickInterval = 0.2;
+                axis.showFirstLabel = false;
+                axis.startAngle = 0;
+                axis.endAngle = 360;
+                axis.axisAlpha = 0.3;
+                chart.addAxis(axis);
+            
+                // hour arrow
+                hArrow = new AmCharts.GaugeArrow();
+                hArrow.radius = "50%";
+                hArrow.clockWiseOnly = true;
+            
+                // minutes arrow
+                mArrow = new AmCharts.GaugeArrow();
+                mArrow.radius = "80%";
+                mArrow.startWidth = 6;
+                mArrow.nailRadius = 0;
+                mArrow.clockWiseOnly = true;
+            
+                // seconds arrow
+                sArrow = new AmCharts.GaugeArrow();
+                sArrow.radius = "90%";
+                sArrow.startWidth = 3;
+                sArrow.nailRadius = 4;
+                sArrow.color = "#CC0000";
+                sArrow.clockWiseOnly = true;
+            
+                // update clock before adding arrows to avoid initial animation
+                updateClock();
+            
+                // add arrows
+                chart.addArrow(hArrow);
+                chart.addArrow(mArrow);
+                chart.addArrow(sArrow);
+            
+                chart.write("chart2div");
+            
+                // update each second
+                setInterval(updateClock, 1000);
+            });
+            
+            // update clock
+            function updateClock() {
+                // get current date
+                var date = new Date();
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var seconds = date.getSeconds();
+            
+                // set hours
+                hArrow.setValue(hours + minutes / 60);
+                // set minutes
+                mArrow.setValue(12 * (minutes + seconds / 60) / 60);
+                // set seconds
+                sArrow.setValue(12 * date.getSeconds() / 60);
+            }
+                    
+            
+        </script>
+
+
+        <script type="text/javascript">
+        <!--性别统计-->
+            var chart;
+            var legend;
+
+            var chartData = [
+                {
+                    "sex": "男",
+                    "value": "<%= @male_count%>"
+                },
+                {
+                    "sex": "女",
+                    "value": "<%= @female_count%>",
+
+                }
+            ];
+
+            AmCharts.ready(function () {
+                // PIE CHART
+                chart = new AmCharts.AmPieChart();
+                chart.dataProvider = chartData;
+                chart.titleField = "sex";
+                chart.valueField = "value";
+                chart.outlineColor = "#FFFFFF";
+                chart.outlineAlpha = 0.8;
+                chart.outlineThickness = 2;
+                chart.balloonText = "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>";
+                // this makes the chart 3D
+                chart.depth3D = 15;
+                chart.angle = 30;
+
+                // WRITE
+                chart.write("chart3div");
+            });
+        </script>
