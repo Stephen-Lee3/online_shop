@@ -48,7 +48,7 @@ gem 'bootstrap-will_paginate'
 gem 'devise'
 gem 'devise-i18n'
 
-#后台
+#已不使用
 gem 'activeadmin', '~> 1.0.0.pre1'
 #后台富文本
 gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
@@ -56,10 +56,15 @@ gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 
 gem 'rails-i18n'
 
+#树结构
 gem 'ancestry'
 
+#搜索
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+
+#富文本
+gem 'rails_kindeditor', '0.4.5'
 
 
 group :development, :test do

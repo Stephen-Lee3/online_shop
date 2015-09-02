@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20150819080309) do
     t.string   "s_province",             limit: 255
     t.string   "s_city",                 limit: 255
     t.string   "s_county",               limit: 255
+    t.integer  "age",                    limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

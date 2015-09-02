@@ -15,5 +15,6 @@ mount_uploader :picture, PictureUploader
 
  searchable do
    text :name
+   float :price
   end
 end
