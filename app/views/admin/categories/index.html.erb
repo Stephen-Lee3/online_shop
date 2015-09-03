@@ -1,4 +1,6 @@
 <div class="col-md-8 col-md-offset-2">
+ <%= link_to '返回主菜单', admin_root_path, class: "btn btn-lg btn-success"%>
+ <div class="normal_border">
 <h1>分类</h1>
 <% @categories.each do |c|%>
 <h2><%=link_to c.name, admin_category_path(c)%></h2>
@@ -13,4 +15,5 @@
  <%= f.input :name%>
  <%= f.submit "添加分类"%>
 <%end%>
+</div>
 </div>

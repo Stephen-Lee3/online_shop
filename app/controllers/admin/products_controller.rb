@@ -4,13 +4,23 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    @selectable_categories = Category.where.not(ancestry: 0)
   end
 
   def create
+    @product = Product.new(product_params)
+    if @product.save
+    flash[:notice] = "创建成功" 
+   else
+    flash[:notice] = "出错啦！" 
+    end
+    redirect_to admin_products_path
   end
 
   def edit
     @product = Product.find(params[:id])
+    @selectable_categories = Category.where.not(ancestry: 0)
   end
 
   def update
@@ -24,10 +34,17 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    if @product.delete
+        flash[:notice] = "删除成功"
+      else
+        flash[:notice] = "出错啦！"
+    end
+    redirect_to admin_products_path
   end
 
   private
   def product_params
-    params.require(:product).permit(:name,:price,:inventory,:picture,:introduction)
+    params.require(:product).permit(:name,:price,:inventory,:picture,:introduction, :category_id)
   end
 end

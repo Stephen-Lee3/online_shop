@@ -1,12 +1,17 @@
-<h1 align="center">商品管理</h1>
+
+<%= link_to '返回主菜单', admin_root_path, class: "btn btn-lg btn-success"%>
+
 <div class="col-md-10 col-md-offset-1">
+ <h1 align="center">商品管理</h1>
 <div class="normal_border">
 <table class="table table-hover">
+	<%= link_to '新建商品', new_admin_product_path, class: "pull-right btn btn-primary btn-lg",'data-no-turbolink' => true%>
 <tr>
 <td><b>id</b></td>
 <td><b>商品名</b></td>
 <td><b>零售价</b></td>
 <td><b>库存</b></td>
+<td><b>操作</b></td>
 </tr>	
 <% @products.each do |product|%>
 <tr>
@@ -14,6 +19,7 @@
 <td><%= link_to product.name, edit_admin_product_path(product),'data-no-turbolink' => true%></td>
 <td><%= product.price%></td>
 <td><%= product.inventory%></td>
+<td><%= link_to '删除', admin_product_path(product), method: :delete%></td>
 </tr>
 <%end%>
 </table>
