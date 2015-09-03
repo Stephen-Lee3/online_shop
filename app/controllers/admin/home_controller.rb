@@ -31,5 +31,6 @@ class Admin::HomeController < ApplicationController
    @age_31_35 = User.where(age: 31..35).count
    @age_36_40 = User.where(age: 36..40).count
    @age_old = User.where("age > 40").count
+   @average_age = User.average("age").to_i
    end
 end
