@@ -1,0 +1,9 @@
+<%= simple_form_for [:admin,@product] do |f|%>
+<%= f.input :name, label: "商品名"%>
+<%= f.input :price, label: "零售价"%>
+<%= f.input :inventory, label: "库存"%>
+<%= f.association :category, collection: @selectable_categories, label: "商品分类"%>
+<%= f.input :picture, label: "展示图"%>
+<%= f.input :introduction, as: :kindeditor, label: "商品描述"%>
+<%= f.submit "创建", class: "btn-lg btn-success"%>
+<%end%>
