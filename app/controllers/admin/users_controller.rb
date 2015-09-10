@@ -1,6 +1,7 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::BaseController
   def index
-  	@users = User.all.paginate(page: params[:page], per_page: 30).order("created_at desc")
+   	@users = User.all.paginate(page: params[:page], per_page: 30).order("created_at desc")
+    @admin_users = Role.find_by_name("admin").users.paginate(page: params[:page], per_page: 30).order("created_at desc")
   end
 
   def edit

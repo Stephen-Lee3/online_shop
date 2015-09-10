@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819080309) do
+ActiveRecord::Schema.define(version: 20150910073936) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20150819080309) do
     t.string   "storage_mime_type",    limit: 255
     t.string   "storage_size",         limit: 255
   end
+
+  create_table "authorities", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "role_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "authorities", ["role_id"], name: "index_authorities_on_role_id", using: :btree
+  add_index "authorities", ["user_id", "role_id"], name: "index_authorities_on_user_id_and_role_id", using: :btree
+  add_index "authorities", ["user_id"], name: "index_authorities_on_user_id", using: :btree
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -139,6 +150,23 @@ ActiveRecord::Schema.define(version: 20150819080309) do
   add_index "products", ["id"], name: "index_products_on_id", using: :btree
   add_index "products", ["name"], name: "index_products_on_name", using: :btree
   add_index "products", ["price"], name: "index_products_on_price", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "role_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+  add_index "user_roles", ["user_id", "role_id"], name: "index_user_roles_on_user_id_and_role_id", using: :btree
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "nick_name",              limit: 255

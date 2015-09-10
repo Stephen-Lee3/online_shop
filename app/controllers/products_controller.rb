@@ -24,8 +24,8 @@ class ProductsController < ApplicationController
     end
     @products = @search.results
   end
-
+   
    def high_grade_search
-    
+     
    end
 end

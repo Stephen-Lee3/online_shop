@@ -1,4 +1,4 @@
-class Admin::HomeController < ApplicationController
+class Admin::HomeController < Admin::BaseController
   def index
   @time = Time.now.strftime("%Y-%m-%d %H:%M:%S")
   
