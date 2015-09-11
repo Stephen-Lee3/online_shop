@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  load_and_authorize_resource
+  before_action :authenticate_user!, except: [:index, :all]
   def index
   	@product = Product.find(params[:product_id])
     @comments = @product.comments.includes(:user).limit(10).order('created_at DESC')

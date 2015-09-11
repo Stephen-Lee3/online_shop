@@ -11,7 +11,7 @@ class Admin::HomeController < Admin::BaseController
   private
    def area_chart_data
      #用户最多的10个城市
-    @top_provinces = User.select("s_province, count(*)").group("s_province").order("count(*) DESC").limit(10)
+    @top_provinces = User.select("s_province, count(*)").where.not(s_province: nil).group("s_province").order("count(*) DESC").limit(10)
    
     @provinces_user_count = [] #10个城市的用户数
     @top_provinces.each do |province|

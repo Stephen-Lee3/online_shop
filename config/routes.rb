@@ -13,7 +13,10 @@ Rails.application.routes.draw do
    root 'home#index'
    resources :categories  
    resources :products, except: [:show]
-   resources :users, only: [:index, :edit, :update, :destroy]
+   resources :users, only: [:index, :edit, :update, :destroy] do
+     post 'add', on: :collection
+     delete 'remove', on: :member
+   end
    resources :orders, only: [:index, :edit, :update, :destroy]
    
   end

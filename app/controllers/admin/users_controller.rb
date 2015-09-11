@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::BaseController
+  before_action :insure_super_admin, only: [:add, :remove]
+
   def index
    	@users = User.all.paginate(page: params[:page], per_page: 30).order("created_at desc")
     @admin_users = Role.find_by_name("admin").users.paginate(page: params[:page], per_page: 30).order("created_at desc")
@@ -18,11 +20,31 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_path
   end
 
-  def destroy
+  def add
+    @user = User.find_by_email(params[:email])
+    if @user.authorities.create!(role_id: 1)
+    flash[:notice] = "添加成功"
+    else
+      flash[:notice] = "出现错误！"
+    end
+    redirect_to admin_users_path
   end
 
+  def remove
+    @user = User.find(params[:id])
+    @user.authorities.find_by_role_id(1).delete unless @user.super_admin?
+    redirect_to admin_users_path
+  end
+
+  def destroy
+  end
+  
   private
   def user_params
   	params.require(:user).permit(:nick_name,:real_name, :phone, :address)
+  end
+
+  def insure_super_admin
+    redirect_to admin_users_path unless current_user.super_admin?
   end
 end

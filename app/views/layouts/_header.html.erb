@@ -14,7 +14,7 @@
         <li><%= link_to '退出', destroy_user_session_path,method: :delete%></li>
     </ul>
   </li>
-  <%=link_to image_tag(current_user.avatar, size: "35x35",class: "pull-right img-rounded"), edit_user_path(current_user)%>
+  <%=link_to image_tag(current_user.check_avatar, size: "35x35",class: "pull-right img-rounded"), edit_user_path(current_user)%>
   <%else%>
    <li class="pull-right"><%= link_to '注册', new_user_registration_path%></li>
    <li class="pull-right"><%= link_to '登录', new_user_session_path%></li>

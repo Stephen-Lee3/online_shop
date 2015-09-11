@@ -1,4 +1,5 @@
 class MarksController < ApplicationController
+  load_and_authorize_resource only: :index
   before_action :authenticate_user!
   def index
   	@mark_products = current_user.mark_products.paginate(page: params[:page], per_page: 5)
