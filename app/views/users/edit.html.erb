@@ -3,7 +3,7 @@
 	<h3>个人资料</h3>
  <div>昵称：<strong><%= current_user.nick_name%></strong></div>
  <div>email：<strong><%= current_user.email%></strong></div>
- <div class="avatar pull-right"><%= image_tag(current_user.avatar,size:"70x70") unless current_user.avatar.blank? %></div>
+ <div class="avatar pull-right"><%= image_tag(current_user.check_avatar,size:"70x70") %></div>
  <br>
  <%= simple_form_for current_user do |f|%>
  <%= f.input :avatar, label: "更换头像"%>

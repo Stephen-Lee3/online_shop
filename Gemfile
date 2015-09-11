@@ -66,6 +66,9 @@ gem 'sunspot_solr'
 #富文本
 gem 'rails_kindeditor', '0.4.5'
 
+#权限
+gem 'cancancan', '~> 1.10'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

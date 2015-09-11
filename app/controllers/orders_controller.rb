@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   after_action :delete_same_item_in_cart, only: :create #从购物车删除已买商品
   after_action :update_inventory, only: :create #更新库存
-
+  load_and_authorize_resource except: :preview
   def index
    @orders = current_user.orders.includes(:product,:item).paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end

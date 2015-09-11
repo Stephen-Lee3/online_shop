@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :find_cart
   before_action :authenticate_user!
+  load_and_authorize_resource
   def create
   	@cart = current_user.cart
   	@product = Product.find(params[:product_id])

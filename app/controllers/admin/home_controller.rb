@@ -1,4 +1,4 @@
-class Admin::HomeController < ApplicationController
+class Admin::HomeController < Admin::BaseController
   def index
   @time = Time.now.strftime("%Y-%m-%d %H:%M:%S")
   
@@ -11,7 +11,7 @@ class Admin::HomeController < ApplicationController
   private
    def area_chart_data
      #用户最多的10个城市
-    @top_provinces = User.select("s_province, count(*)").group("s_province").order("count(*) DESC").limit(10)
+    @top_provinces = User.select("s_province, count(*)").where.not(s_province: nil).group("s_province").order("count(*) DESC").limit(10)
    
     @provinces_user_count = [] #10个城市的用户数
     @top_provinces.each do |province|
@@ -31,5 +31,6 @@ class Admin::HomeController < ApplicationController
    @age_31_35 = User.where(age: 31..35).count
    @age_36_40 = User.where(age: 36..40).count
    @age_old = User.where("age > 40").count
+   @average_age = User.average("age").to_i
    end
 end

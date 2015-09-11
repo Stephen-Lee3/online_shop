@@ -1,7 +1,7 @@
 <% @comments.each do |comment|%>
 <div class="item">
 <div class="col-md-2">
- <div><%= image_tag(comment.user.avatar,size: "60x60",class: "img-circle")%></div>
+ <div><%= image_tag(comment.user.check_avatar,size: "60x60",class: "img-circle")%></div>
   <div><%= comment.user.nick_name%></div>
 </div>
 <div class="col-md-8">

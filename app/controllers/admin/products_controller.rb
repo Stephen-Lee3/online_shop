@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < Admin::BaseController
   def index
    @products = Product.all.paginate(page: params[:page], per_page: 30).order("created_at desc")
   end
