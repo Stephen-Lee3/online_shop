@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
 
-
   devise_for :users
   root 'products#index'
 
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :products do
    get 'detail', on: :member
-   resources :comments, only: [:index,:create] 
+   resources :comments, only: [:index,:create, :destroy] 
   end
 
   resources :comments do
@@ -43,6 +42,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:show]
+  resources :black_lists, only: [:create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
