@@ -1,11 +1,11 @@
 <div class="col-md-8 col-md-offset-2">
  <%= link_to '返回主菜单', admin_root_path, class: "btn btn-lg btn-success"%>
  <div class="normal_border">
-<h1>分类</h1>
+<h1 align="center">分类</h1>
 <% @categories.each do |c|%>
-<h2><%=link_to c.name, admin_category_path(c)%></h2>
+<h2><%=link_to c.name, admin_category_path(c), class: "btn btn-lg btn-info"%></h2>
 <div><% c.children.each do |children|%>
-<h4><%= link_to children.name, admin_category_path(children)%></h4>
+<%= link_to children.name, admin_category_path(children),class: "btn btn-default"%>
 <%end%>
 </div>
 <hr>
