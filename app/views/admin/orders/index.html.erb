@@ -12,6 +12,7 @@
 <td><b>商品</b></td>
 <td><b>数量</b></td>
 <td><b>总价</b></td>
+<td><b>时间</b></td>
 <td><b>操作</b></td>
 </tr>	
 <% @orders.each do |order|%>
@@ -23,10 +24,19 @@
 <td><%= order.product.name%></td>
 <td><%= order.item.quantity%></td>
 <td><%= order.total_price%></td>
+<td><%= order.created_at.to_s(:db)%></td>
 <td><%= link_to '编辑', edit_admin_order_path(order)%>,<%= link_to '删除', admin_order_path(order), method: :delete%></td>
 </tr>
 <%end%>
 </table>
 <%= will_paginate @orders %>
+</div>
+<hr>
+<h1 align="center">订单统计信息</h1>
+<div class="normal_border">
+	<div>今日销售额：<%= @today_sales%></div>
+	<div>本周销售额：<%= @week_sales%></div>
+	<div>本月销售额：<%= @month_sales%></div>
+	<div>年度销售额：<%= @year_sales%></div>
 </div>
 </div>

@@ -6,7 +6,7 @@
 				<li><%= link_to "首页", root_path%></li>
 				<li><a href="http://www.jq22.com">所有商品</a></li>
 				<li><% if current_user && current_user.has_role?("admin")%>
-                  <%= link_to '后台', admin_root_path%>
+                  <%= link_to '后台', admin_root_path, 'data-no-turbolink' => true%>
                 <%end%>
 				</li>
 			</ul>

@@ -8,7 +8,16 @@ class Order < ActiveRecord::Base
  validates :phone, presence: true, length: {minimum: 5, maximum: 15}
  validates :address, presence: true, length: {maximum: 60}
 
+ after_create :increment_sales_counter
+
  def total_price    #订单总价
  	self.product.price * self.item.quantity
  end
+
+ private
+
+  def increment_sales_counter
+  	product = self.product
+  	product.update_attributes(sales: product.sales + self.item.quantity )
+  end
 end

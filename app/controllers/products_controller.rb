@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
   def index
     @products = Product.all.order("created_at desc")
+    @hot_sales = Product.where.not(sales: 0).order("sales desc").limit(10)
   end
 
   def show
