@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :comments do
   get 'all', on: :member
+  post 'ban', on: :member
   end
 
   resources :users, only: [:show,:edit,:update,:destroy]
