@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @comments_count = @product.comments.count
   end
 
   def detail

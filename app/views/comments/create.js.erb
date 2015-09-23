@@ -1,2 +1,4 @@
 $('#comment_lists').html("<%= j(render('comments/comment_lists'))%>")
+$('#comments_count').html('<%= link_to "评价(#{@product.comments.count})", product_comments_path(@product),id: "comments_count",remote: true%>')
+$('#all_comment').html('<%= link_to "查看全部#{@product.comments.count}条评论", all_comment_path(@product),id: "all_comment",class: "pull-right"%>')
 $('#notice').html("您的评价已提交成功！")
