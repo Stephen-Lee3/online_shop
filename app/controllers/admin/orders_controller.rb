@@ -5,7 +5,7 @@ class Admin::OrdersController < Admin::BaseController
     today_orders = @orders.where("created_at > ?", Time.now.midnight)
     @today_sales = sales_amount(today_orders)
 
-    week_orders = @orders.where("created_at > ?", (Time.now.wday - 1).days.ago.midnight)
+    week_orders = @orders.where("created_at > ?", (Time.now.wday).days.ago.midnight)
     @week_sales = sales_amount(week_orders)
 
     month_orders = @orders.where("created_at > ?", (Time.now.mday - 1).days.ago.midnight)
