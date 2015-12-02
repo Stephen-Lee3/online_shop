@@ -17,6 +17,7 @@
  *= require adipoli
  *= require jdnav
  */
+
  #logo{
   width: 220px;
   height: 120px;
@@ -30,6 +31,11 @@ hr{
   -moz-box-shadow:0 0 10px #0CC;  
   box-shadow:0 0 10px #0CC;  
 }
+
+ .product_page_background{
+  background-color: #e6ebef;
+ }
+
  .item{
  	background-color: #F2F2F2;
  	border: 1px solid #FAF0E6;

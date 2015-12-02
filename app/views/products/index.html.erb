@@ -29,16 +29,17 @@
     </div>
   
    <h2>全部商品</h2><hr>
- <div class="col-md-10"> 
+ <div class="col-md-10 product_page_background"> 
  <%= render 'show_products'%>
  </div> 
+
 <div class="col-md-2">
  <div class="normal_border">
   <h2>热卖榜</h2><hr>
   <ol>
    <% @hot_sales.each do |product|%>
-     <li><%= image_tag product.picture, size: "150x150"%></li>
-     <li><%= product.name%><strong class="red_color">$<%= product.price%></strong><strong class="pull-right">销量：<%= product.sales%></strong></li><hr>
+     <li><%= link_to (image_tag product.picture, size: "150x150"), product_path(product)%></li>
+     <li><%= link_to product.name, product_path(product)%><strong class="red_color">$<%= product.price%></strong><strong class="pull-right">销量：<%= product.sales%></strong></li><hr>
    <%end%>
   </ol>
  </div>

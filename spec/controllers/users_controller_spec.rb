@@ -2,33 +2,16 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+	let(:user) {create :user}
 
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
-    end
-  end
 
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
-  end
+   describe ':edit' do
+   it "should edit user" do
+   	 sign_in user
+     get :edit, id: user.id
+     expect(response).to render_template :edit
+   end
+  end 
 
-  describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
-
+  
 end

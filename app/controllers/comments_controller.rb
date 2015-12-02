@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource except: :ban
+  load_and_authorize_resource except: [:ban,:all]
   before_action :authenticate_user!, except: [:index, :all]
   before_action :insure_can_comment, only: [:create]
   before_action :load_comments_data, except: :all
   def index
-  	@comments_count = @product.comments.count
     respond_to do |format|
       format.js
   	end

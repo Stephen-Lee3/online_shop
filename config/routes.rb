@@ -1,12 +1,13 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
   root 'products#index'
 
   get '/search', to: 'products#search'
   get '/high_grade_search', to: 'products#high_grade_search'
   
+  mount RuCaptcha::Engine => "/rucaptcha"
 
   namespace :admin do
    root 'home#index'

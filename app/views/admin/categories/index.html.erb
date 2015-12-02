@@ -1,5 +1,5 @@
 <div class="col-md-8 col-md-offset-2">
- <%= link_to '返回主菜单', admin_root_path, class: "btn btn-lg btn-success"%>
+ <%= link_to '返回主菜单', admin_root_path, class: "btn btn-lg btn-success",'data-no-turbolink' => true%>
  <div class="normal_border">
 <h1 align="center">分类</h1>
 <% @categories.each do |c|%>

@@ -2,7 +2,7 @@
 	<div id="comment_lists">
 <%= render 'comment_lists'%>
 </div>
-<h4><%= link_to "查看全部#{@comments_count}条评论", all_comment_path(@product), class: "pull-right"%></h4>
+<h4><%= link_to "查看全部#{@product.comments.count}条评论", all_comment_path(@product),id: "all_comment",class: "pull-right"%></h4>
 </div>
 <hr>
 

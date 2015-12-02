@@ -68,7 +68,7 @@ gem 'rails_kindeditor', '0.4.5'
 
 #权限
 gem 'cancancan', '~> 1.10'
-
+gem 'rucaptcha'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
