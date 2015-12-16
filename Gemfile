@@ -48,11 +48,6 @@ gem 'bootstrap-will_paginate'
 gem 'devise'
 gem 'devise-i18n'
 
-
-#后台富文本
-gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
-gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
-
 gem 'rails-i18n'
 
 #树结构
@@ -67,6 +62,8 @@ gem 'rails_kindeditor', '0.4.5'
 
 #权限
 gem 'cancancan', '~> 1.10'
+
+#验证码
 gem 'rucaptcha'
 
 group :development, :test do
