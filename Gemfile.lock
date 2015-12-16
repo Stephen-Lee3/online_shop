@@ -316,7 +316,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin (~> 1.0.0.pre1)
   activeadmin-dragonfly!
   activeadmin-wysihtml5!
   ancestry
