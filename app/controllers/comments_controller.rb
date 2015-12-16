@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
 
   private
    def comment_params
-   	params.require(:comment).permit(:user_id,:product_id,:content)
+   	params.require(:comment).permit(:user_id,:content,:commentable_type,:commentable_id)
    end
    
    def insure_can_comment

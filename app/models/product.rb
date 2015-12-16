@@ -6,7 +6,7 @@ belongs_to :category
 has_many :marks, dependent: :destroy
 has_many :marking_users, through: :marks, source: :user
 
-has_many :comments, dependent: :destroy
+has_many :comments, as: :commentable,dependent: :destroy
 mount_uploader :picture, PictureUploader
  
  validates :name, presence: true, length: {maximum: 50}
