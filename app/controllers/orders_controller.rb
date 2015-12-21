@@ -19,7 +19,13 @@ class OrdersController < ApplicationController
 
   def create
   	@order = current_user.orders.build(order_params)
-    if  @order.save 
+    @order.total = @order.calcu_total 
+   
+    if !@order.verify_code.blank?
+       @order.judge_total  
+    end
+
+    if @order.save 
       redirect_to orders_path
   	 else
   	 	flash[:notice] = "提交订单失败"
@@ -29,8 +35,9 @@ class OrdersController < ApplicationController
 
   private
    def order_params
-   	params.require(:order).permit(:buyer,:phone,:address,:user_id,
-   		item_attributes: [:order_id,:product_id,:quantity,:cart_id])
+   	params.require(:order).permit(:buyer,:phone,:address,:user_id,:verify_code,
+   		item_attributes: [:order_id,:product_id,:quantity,:cart_id]
+      )
    end
    
    def delete_same_item_in_cart #从购物车删除商品

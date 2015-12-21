@@ -1,0 +1,24 @@
+<h1>优惠卷</h1>
+<div class="form-inline">
+ <%= form_tag admin_coupons_path do %>
+ 张数：<%= text_field_tag :quantity,params[:quantity],
+  class: "form-control"%>
+ 面值:<%= text_field_tag :value,params[:value],class: "form-control"%>
+ <%= submit_tag "生成",class: "btn btn-default"%>
+ <%end%>
+</div>
+<table class="table table-hover">
+<tr>
+<td>验证码</td>
+<td>面值</td>
+<td>有效期至</td>
+</tr>
+
+<% @coupons.each do |cp|%>
+<tr>
+<td><%= cp.verify_code%></td>
+<td><%= cp.value%></td>	
+<td><%= cp.expire_at%></td>		
+</tr>
+<%end%>
+</table>

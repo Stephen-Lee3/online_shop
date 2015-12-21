@@ -23,7 +23,7 @@
  <div class="col-md-3"><%=link_to order.product.name, product_path(order.product)%></div>
  <div class="col-md-1"><%= order.product.price%></div>
  <div class="col-md-1"><%= order.item.quantity%></div>
- <div class="col-md-1 "><%= order.total_price%></div>
+ <div class="col-md-1 "><%= order.total%></div>
  <div class="col-md-1"><%= link_to '订单详情',order_path(order)%></div>
 </div><br>
 <%end%>

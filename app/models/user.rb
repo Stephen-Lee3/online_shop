@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :authorities, dependent: :destroy
   has_many :roles, through: :authorities
+  has_many :coupons, dependent: :destroy
 
    mount_uploader :avatar, AvatarUploader
 

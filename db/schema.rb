@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216142331) do
+ActiveRecord::Schema.define(version: 20151221102912) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 20151216142331) do
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
 
+  create_table "coupons", force: :cascade do |t|
+    t.string   "verify_code", limit: 255
+    t.integer  "value",       limit: 4
+    t.datetime "expire_at"
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.integer  "product_id", limit: 4
     t.integer  "cart_id",    limit: 4
@@ -141,8 +150,9 @@ ActiveRecord::Schema.define(version: 20151216142331) do
     t.string   "phone",      limit: 255
     t.string   "address",    limit: 255
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.decimal  "total",                  precision: 8, scale: 2, null: false
   end
 
   create_table "products", force: :cascade do |t|

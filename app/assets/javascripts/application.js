@@ -24,5 +24,3 @@
 function item_exist(){
 	alert("该商品已在您的购物车内");
 }
-
-

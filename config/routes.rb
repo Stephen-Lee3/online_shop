@@ -18,7 +18,7 @@ Rails.application.routes.draw do
      delete 'remove', on: :member
    end
    resources :orders, only: [:index, :edit, :update, :destroy]
-   
+   resources :coupons, only: [:index,:create]
   end
 
   resources :products do

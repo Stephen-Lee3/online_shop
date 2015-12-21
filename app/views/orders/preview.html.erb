@@ -10,7 +10,7 @@
       <strong>数量</strong>
     </div>
 	<br>
- 
+  <%= simple_form_for @order do |f|%>
  <div class="item">
   <div class="col-md-2">
    <%=link_to image_tag(@product.picture,size:"80x80"),product_path(@product)%>
@@ -23,23 +23,35 @@
    </div>
 
      <div class="col-md-1">
-    
+    <%= f.simple_fields_for :item do |item|%>
+    <%= item.input :quantity,label: false%>
+      <%= item.input :product_id, as: :hidden, input_html: {value: @product.id}%>
+     <%end%>
      </div>
+
     </div>
+     <div>
+       <%= f.input :verify_code,placeholder: "输入8位优惠卷号",label: "使用优惠卷"%>
+     </div>  
   </div>
+
+  
+      
 
   <div class="col-md-6 col-md-offset-1">
  <h2>确认收货地址</h2><hr>
- <%= simple_form_for @order do |f|%>
+
    <%= f.input :buyer,label: "收货人姓名：",input_html: { value: current_user.real_name }%>
    <%= f.input :phone,label: "手机号码：",input_html: { value: current_user.phone }%>
    <%= f.input :address,label: "收货地址：",input_html: { value: "#{current_user.s_province}-#{current_user.s_city}-#{current_user.s_county}-#{current_user.address}" }%>
-   <%= f.simple_fields_for :item do |item|%>
-   <%= item.input :quantity,label: "购买数量"%>
-      <%= item.input :product_id, as: :hidden, input_html: {value: @product.id}%>
-   <%end%>
+
    <%= f.submit '提交订单', class: "btn btn-lg btn-success"%>
  <%end%>
 
 
 </div>
+<script>
+$("#show_verify_code").click(function(){
+  $("#order_verify_code").show();
+});
+</script>
