@@ -4,7 +4,7 @@ class Admin::CouponsController < ApplicationController
   end
 
   def create
-  	Coupon.generate_cp(params[:quantity],params[:value])
+  	Coupon.generate(params[:quantity],params[:value])
   	redirect_to admin_coupons_path
   end
 end

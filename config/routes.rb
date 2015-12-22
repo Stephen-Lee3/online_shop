@@ -19,6 +19,7 @@ Rails.application.routes.draw do
    end
    resources :orders, only: [:index, :edit, :update, :destroy]
    resources :coupons, only: [:index,:create]
+   resources :awards, only: [:index,:create,:edit,:update,:destroy]
   end
 
   resources :products do
@@ -45,6 +46,9 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
   resources :black_lists, only: [:create]
+  resources :awards, only: [:index] do
+    get 'judge', on: :collection
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

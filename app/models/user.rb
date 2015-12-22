@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :authorities, dependent: :destroy
   has_many :roles, through: :authorities
   has_many :coupons, dependent: :destroy
+  has_many :award_items, dependent: :destroy
 
    mount_uploader :avatar, AvatarUploader
 
@@ -25,7 +26,10 @@ class User < ActiveRecord::Base
    def create_cart
     Cart.create(user_id: self.id)
    end
-    
+   
+   def update_score(order_total)
+       self.update_attributes(score: self.score + order_total)    
+   end  
 
    def check_avatar
      if avatar.blank?

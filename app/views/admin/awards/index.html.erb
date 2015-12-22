@@ -1,0 +1,31 @@
+<h1>奖项列表</h1>
+<table class="table table-hover">
+<tr>
+<td>奖品名</td>
+<td> 剩余数量</td>
+<td>有效期至</td>
+<td>中奖率(基数：万)</td>
+<td>操作</td>
+</tr>
+<% @awards.each do |a|%>
+<tr>
+<td><%= a.name%></td>
+<td><%= a.quantity%></td>
+<td><%= a.expire_at%></td>
+<td><%= a.odds%>/10000</td>
+<td><%= link_to '修改 ',edit_admin_award_path(a)%> | <%= link_to '删除',admin_award_path(a),method: :delete%></td>
+</tr>
+<%end%>
+</table>
+<div class="col-md-5">
+<h3>创建新奖项</h3>	
+<%= simple_form_for [:admin,@award] do |f|%>
+<%= f.input :name,label: "奖品名"%>
+ <%= f.input :quantity,label: "数量"%>
+ <div class="form-inline">
+ <%= f.input :expire_at,label: "有效期至",class: "form-control"%>
+ </div>
+ <%= f.input :odds,label: "中奖率(基数：万)"%>
+ <%= f.submit 'submit',class: "btn btn-primary btn-lg"%>
+<%end%>
+</div>

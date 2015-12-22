@@ -25,7 +25,8 @@ class OrdersController < ApplicationController
        @order.judge_total  
     end
 
-    if @order.save 
+    if @order.save
+      current_user.update_score(@order.total)
       redirect_to orders_path
   	 else
   	 	flash[:notice] = "提交订单失败"

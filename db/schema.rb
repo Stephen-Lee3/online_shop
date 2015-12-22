@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221102912) do
+ActiveRecord::Schema.define(version: 20151222113749) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -70,6 +70,23 @@ ActiveRecord::Schema.define(version: 20151221102912) do
   add_index "authorities", ["role_id"], name: "index_authorities_on_role_id", using: :btree
   add_index "authorities", ["user_id", "role_id"], name: "index_authorities_on_user_id_and_role_id", using: :btree
   add_index "authorities", ["user_id"], name: "index_authorities_on_user_id", using: :btree
+
+  create_table "award_items", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "expire_at"
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "awards", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "quantity",   limit: 4
+    t.datetime "expire_at"
+    t.integer  "odds",       limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "black_lists", force: :cascade do |t|
     t.string   "email",      limit: 255
@@ -194,14 +211,14 @@ ActiveRecord::Schema.define(version: 20151221102912) do
     t.string   "address",                limit: 255
     t.string   "phone",                  limit: 255
     t.string   "real_name",              limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
+    t.string   "email",                  limit: 255,                         default: "",  null: false
+    t.string   "encrypted_password",     limit: 255,                         default: "",  null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,                           default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -213,6 +230,7 @@ ActiveRecord::Schema.define(version: 20151221102912) do
     t.string   "s_county",               limit: 255
     t.integer  "age",                    limit: 4
     t.string   "status",                 limit: 255
+    t.decimal  "score",                              precision: 8, scale: 2, default: 0.0, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
