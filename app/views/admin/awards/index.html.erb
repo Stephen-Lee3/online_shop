@@ -11,7 +11,7 @@
 <tr>
 <td><%= a.name%></td>
 <td><%= a.quantity%></td>
-<td><%= a.expire_at%></td>
+<td><%= format_time(a.expire_at)%></td>
 <td><%= a.odds%>/10000</td>
 <td><%= link_to '修改 ',edit_admin_award_path(a)%> | <%= link_to '删除',admin_award_path(a),method: :delete%></td>
 </tr>

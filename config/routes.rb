@@ -12,13 +12,18 @@ Rails.application.routes.draw do
   namespace :admin do
    root 'home#index'
    resources :categories  
+
    resources :products, except: [:show]
+
    resources :users, only: [:index, :edit, :update, :destroy] do
      post 'add', on: :collection
      delete 'remove', on: :member
    end
+
    resources :orders, only: [:index, :edit, :update, :destroy]
+   
    resources :coupons, only: [:index,:create]
+
    resources :awards, only: [:index,:create,:edit,:update,:destroy]
   end
 
@@ -33,7 +38,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show,:edit,:update,:destroy]
+
   resources :carts, only: [:show,:destroy]
+
   resources :items, only: [:create,:destroy]
 
   resources :orders, only: [:index,:show,:create] do 
@@ -45,10 +52,15 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:show]
+
   resources :black_lists, only: [:create]
+
   resources :awards, only: [:index] do
+    get 'show_all', on: :collection
     get 'judge', on: :collection
   end
+
+  resources :coupons, only: [:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

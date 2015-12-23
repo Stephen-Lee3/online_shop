@@ -15,9 +15,17 @@ class Admin::AwardsController < ApplicationController
   end
 
   def update
+    @award = Award.find(params[:id])
+    if @award.update_attributes(award_params)
+     redirect_to admin_awards_path
+    end
   end
 
   def destroy
+    @award = Award.find(params[:id])
+    if @award.delete
+      redirect_to admin_awards_path
+    end
   end
 
   private

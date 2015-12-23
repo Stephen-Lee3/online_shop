@@ -7,6 +7,6 @@
  <hr>
  <h3>订单详情</h3>
  <div>订单编号: <strong><%=@order.id%></strong></div>
- <div>订单日期：<strong><%= format_time(@order)%></strong></div>
+ <div>订单日期：<strong><%= format_time(@order.created_at)%></strong></div>
 </div>
 </div>

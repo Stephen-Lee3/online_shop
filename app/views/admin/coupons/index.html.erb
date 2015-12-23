@@ -18,7 +18,7 @@
 <tr>
 <td><%= cp.verify_code%></td>
 <td><%= cp.value%></td>	
-<td><%= cp.expire_at%></td>		
+<td><%= format_time(cp.expire_at)%></td>		
 </tr>
 <%end%>
 </table>
