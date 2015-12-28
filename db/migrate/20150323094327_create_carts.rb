@@ -4,6 +4,6 @@ class CreateCarts < ActiveRecord::Migration
       t.belongs_to :user
       t.timestamps null: false
     end
-    add_index :carts, :id
+    add_index :carts, :user_id
   end
 end

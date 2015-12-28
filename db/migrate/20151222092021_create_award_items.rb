@@ -7,5 +7,6 @@ class CreateAwardItems < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :award_items, :user_id
   end
 end

@@ -6,5 +6,6 @@ class CreateComments < ActiveRecord::Migration
       t.belongs_to :product
       t.timestamps null: false
     end
+    add_index :comments, :user_id
   end
 end

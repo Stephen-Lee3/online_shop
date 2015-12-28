@@ -7,5 +7,6 @@ class CreateCoupons < ActiveRecord::Migration
       t.belongs_to :user
       t.timestamps null: false
     end
+    add_index :coupons, :user_id
   end
 end
