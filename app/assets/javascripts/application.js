@@ -12,11 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require kindeditor
 //= require turbolinks
 //= require bootstrap
 //= require jquery-ui
-//= require js/slider
 //= require js/jquery.adipoli.min
 //= require area
 //= require_tree .

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails'#, '4.2.0'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -31,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-ui-rails'
 #表单处理 
 gem 'simple_form'
@@ -58,7 +58,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 
 #富文本
-gem 'rails_kindeditor', '0.4.5'
+#gem 'rails_kindeditor', '0.4.5'
 
 #权限
 gem 'cancancan', '~> 1.10'
